@@ -2,23 +2,28 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Flask stock demo</title>
+		<title>{{nm}} data</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.css" type="text/css" />
+		<script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.1.min.js"></script>
+		{{ script | safe }}
 	</head>
 	<body>
 		<div>
-  			<h1>Please choose a company:</h1>
+  			<h1>Hello, {{nm}}!</h1>
 		<form id='answerform' method='post' action='index'>
 				<select name="option">
 				{% for o in names %}
 				    <option value="{{ o }}">{{ o }}</option>
 				{% endfor %}
 				</select>
-				<input type="submit" value="View data">
+				<input type="submit" value="Plot data">
 		</form>
-
+		</div>
+		<div class='bokeh' width="100%">
+			{{ div | safe }}
 		</div>
 	</body>
 </html>
